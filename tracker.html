@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PesaPal Tracker</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <div class="page-shell">
+    <header class="site-header">
+      <div class="brand">
+        <img class="brand-logo" src="logo-transparent.png" alt="PesaPal logo">
+        <div>
+          <h1>PesaPal Tracker</h1>
+          <p>Keep track of your money in a simple way.</p>
+        </div>
+      </div>
+      <nav class="site-nav">
+        <a href="index.html">Home</a>
+        <a class="active" href="tracker.html">Tracker</a>
+        <a href="summary.html">Summary</a>
+      </nav>
+    </header>
+
+    <section class="tracker-simple">
+      <div class="card">
+        <h2>Set your budget</h2>
+        <form id="budget-form" class="simple-form">
+          <label for="budget-input">Monthly budget (KSH)</label>
+          <input id="budget-input" type="number" min="0.01" step="any" placeholder="Enter budget amount" required>
+          <button type="submit" class="button primary">Save budget</button>
+        </form>
+        <div class="totals">
+          <div>
+            <span>Budget</span>
+            <strong id="budget-total">KSH 0</strong>
+          </div>
+          <div>
+            <span>Spent</span>
+            <strong id="budget-spent">KSH 0</strong>
+          </div>
+          <div>
+            <span>Remaining</span>
+            <strong id="budget-remaining">KSH 0</strong>
+          </div>
+        </div>
+        <div id="budget-warning" class="alert info">Set a budget to start tracking your spending.</div>
+      </div>
+
+      <div class="card">
+        <h2>Add an expense</h2>
+        <form id="expense-form" class="simple-form">
+          <label for="expense-description">Description</label>
+          <input id="expense-description" type="text" placeholder="e.g. Lunch" required>
+
+          <label for="expense-amount">Amount (KSH)</label>
+          <input id="expense-amount" type="number" min="0.01" step="any" placeholder="KSH 0.00" required>
+
+          <label for="expense-category">Category</label>
+          <select id="expense-category">
+            <option>Food</option>
+            <option>Transport</option>
+            <option>Study</option>
+            <option>Entertainment</option>
+            <option>Other</option>
+          </select>
+
+          <button type="submit" class="button secondary">Add expense</button>
+        </form>
+      </div>
+    </section>
+
+    <section class="tracker-simple">
+      <div class="card">
+        <h2>Recent expenses</h2>
+        <div class="expense-list">
+          <table>
+            <thead>
+              <tr>
+                <th>Date</th>
+                <th>Description</th>
+                <th>Category</th>
+                <th>Amount</th>
+              </tr>
+            </thead>
+            <tbody id="expense-table-body"></tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+  </div>
+</body>
+</html>
