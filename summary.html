@@ -1,32 +1,97 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>PesaPal Summary</title>
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Summary - PesaPal</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="page-shell">
-    <header class="site-header">
-      <div class="brand">
-        <img class="brand-logo" src="logo-transparent.png" alt="PesaPal logo">
-        <div>
-          <h1>PesaPal Summary</h1>
-          <p>Simple overview of your spending project.</p>
+
+    <header class="header">
+        <div class="container header-content">
+            <div class="logo">
+                <img src="logo.png" alt="PesaPal Logo">
+                <div class="logo-text">
+                    <h1>PesaPal</h1>
+                    <p>Student expense tracker</p>
+                </div>
+            </div>
+            <nav class="nav">
+                <a href="index.html">Home</a>
+                <a href="tracker.html">Tracker</a>
+                <a href="summary.html" class="active">Summary</a>
+            </nav>
         </div>
-      </div>
-      <nav class="site-nav">
-        <a href="index.html">Home</a>
-        <a href="tracker.html">Tracker</a>
-        <a class="active" href="summary.html">Summary</a>
-      </nav>
     </header>
 
-    <main class="hero simple-summary">
-      <h2>This page shows your expense summary.</h2>
-      <p>Open the tracker to add your budget and expenses, then come here to review the totals.</p>
+    <main class="container">
+        
+        <!-- Top Stats Cards -->
+        <div class="tracker-grid">
+            <article class="card" style="border-top: 4px solid #5b7fff;">
+                <h3 style="color: #555; font-size: 14px; margin-bottom: 10px;">TOTAL BUDGET</h3>
+                <p style="font-size: 32px; font-weight: bold; color: #0f2a4b;" id="summaryBudget">KSH 0</p>
+            </article>
+            
+            <article class="card" style="border-top: 4px solid #e74c3c;">
+                <h3 style="color: #555; font-size: 14px; margin-bottom: 10px;">TOTAL SPENT</h3>
+                <p style="font-size: 32px; font-weight: bold; color: #e74c3c;" id="summarySpent">KSH 0</p>
+            </article>
+            
+            <article class="card" style="border-top: 4px solid #27ae60;">
+                <h3 style="color: #555; font-size: 14px; margin-bottom: 10px;">REMAINING</h3>
+                <p style="font-size: 32px; font-weight: bold; color: #27ae60;" id="summaryLeft">KSH 0</p>
+            </article>
+        </div>
+
+        <!-- Charts Section -->
+        <div class="tracker-grid">
+            
+            <!-- Category Breakdown -->
+            <article class="card">
+                <h2>Spending by Category</h2>
+                <div id="categoryChart">
+                    <p class="empty-message">No expenses to show</p>
+                </div>
+            </article>
+
+            <!-- Daily Spending -->
+            <article class="card">
+                <h2>Recent Activity</h2>
+                <div id="dailyChart">
+                    <p class="empty-message">No expenses to show</p>
+                </div>
+            </article>
+
+        </div>
+
+        <!-- Expense History Table -->
+        <section class="table-container" style="margin-top: 25px;">
+            <h2>All Expenses</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>Description</th>
+                        <th>Category</th>
+                        <th>Amount</th>
+                    </tr>
+                </thead>
+                <tbody id="allExpensesTable">
+                    <tr>
+                        <td colspan="4" class="empty-message">No expenses recorded yet</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
     </main>
-  </div>
+
+    <footer class="footer">
+        <p>PesaPal - Made for students</p>
+    </footer>
+
+    <script src="summary.js"></script>
 </body>
 </html>

@@ -1,51 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>PesaPal | Student Expense Tracker</title>
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PesaPal - Student Expense Tracker</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="page-shell">
-    <header class="site-header">
-      <div class="brand">
-        <img class="brand-logo" src="logo-transparent.png" alt="PesaPal logo">
-        <div>
-          <h1>PesaPal</h1>
-          <p>Simple student spending tracker</p>
+
+    <header class="header">
+        <div class="container header-content">
+            <div class="logo">
+                <img src="logo.png" alt="PesaPal Logo">
+                <div class="logo-text">
+                    <h1>PesaPal</h1>
+                    <p>Student expense tracker</p>
+                </div>
+            </div>
+            <nav class="nav">
+                <a href="index.html" class="active">Home</a>
+                <a href="tracker.html">Tracker</a>
+                <a href="summary.html">Summary</a>
+                
+            </nav>
         </div>
-      </div>
-      <nav class="site-nav">
-        <a class="active" href="index.html">Home</a>
-        <a href="tracker.html">Tracker</a>
-        <a href="summary.html">Summary</a>
-      </nav>
     </header>
 
-    <main class="hero">
-      <h2>Track expenses and stay under your budget.</h2>
-      <p>PesaPal helps students log spending, set a budget, and receive alerts before overspending.</p>
-      <div class="hero-actions">
-        <a class="button primary" href="tracker.html">Open Tracker</a>
-        <a class="button secondary" href="summary.html">View Summary</a>
-      </div>
+    <main class="container">
+        <section class="hero">
+            <h2>Track expenses and stay under your budget</h2>
+            <p>PesaPal helps students log spending, set a budget, and receive alerts before overspending.</p>
+            <div class="hero-buttons">
+                <a href="tracker.html" class="btn btn-primary">Open Tracker</a>
+                <a href="summary.html" class="btn btn-secondary">View Summary</a>
+            </div>
+        </section>
+
+        <section class="features">
+            <article class="feature-card">
+                <h3>Budget Control</h3>
+                <p>Set your monthly budget and see how much money you have left.</p>
+            </article>
+            <article class="feature-card">
+                <h3>Expense Log</h3>
+                <p>Add every purchase so you can check your spending at any time.</p>
+            </article>
+            <article class="feature-card">
+                <h3>Smart Warnings</h3>
+                <p>Get alerts when your spending gets close to your budget limit.</p>
+            </article>
+        </section>
     </main>
 
-    <section class="features">
-      <article>
-        <h3>Budget control</h3>
-        <p>Set your monthly budget and see how much money you have left.</p>
-      </article>
-      <article>
-        <h3>Expense log</h3>
-        <p>Add every purchase so you can check your spending at any time.</p>
-      </article>
-      <article>
-        <h3>Smart warnings</h3>
-        <p>Get alerts when your spending gets close to your budget limit.</p>
-      </article>
-    </section>
-  </div>
+    <footer class="footer">
+        <p>PesaPal - Made for students</p>
+    </footer>
+
 </body>
 </html>

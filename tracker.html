@@ -1,95 +1,121 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>PesaPal Tracker</title>
-  <link rel="stylesheet" href="style.css">
-  <script src="script.js" defer></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tracker - PesaPal</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="page-shell">
-    <header class="site-header">
-      <div class="brand">
-        <img class="brand-logo" src="logo-transparent.png" alt="PesaPal logo">
-        <div>
-          <h1>PesaPal Tracker</h1>
-          <p>Keep track of your money in a simple way.</p>
+
+    <header class="header">
+        <div class="container header-content">
+            <div class="logo">
+                <img src="logo.png" alt="PesaPal Logo">
+                <div class="logo-text">
+                    <h1>PesaPal</h1>
+                    <p>Student expense tracker</p>
+                </div>
+            </div>
+            <nav class="nav">
+                <a href="index.html">Home</a>
+                <a href="tracker.html" class="active">Tracker</a>
+                <a href="summary.html">Summary</a>
+            </nav>
+            <!-- In tracker.html, update the nav -->
+
         </div>
-      </div>
-      <nav class="site-nav">
-        <a href="index.html">Home</a>
-        <a class="active" href="tracker.html">Tracker</a>
-        <a href="summary.html">Summary</a>
-      </nav>
     </header>
 
-    <section class="tracker-simple">
-      <div class="card">
-        <h2>Set your budget</h2>
-        <form id="budget-form" class="simple-form">
-          <label for="budget-input">Monthly budget (KSH)</label>
-          <input id="budget-input" type="number" min="0.01" step="any" placeholder="Enter budget amount" required>
-          <button type="submit" class="button primary">Save budget</button>
-        </form>
-        <div class="totals">
-          <div>
-            <span>Budget</span>
-            <strong id="budget-total">KSH 0</strong>
-          </div>
-          <div>
-            <span>Spent</span>
-            <strong id="budget-spent">KSH 0</strong>
-          </div>
-          <div>
-            <span>Remaining</span>
-            <strong id="budget-remaining">KSH 0</strong>
-          </div>
+    <main class="container">
+        <div class="tracker-grid">
+            
+            <!-- Budget Card -->
+            <article class="card">
+                <h2>Set Your Budget</h2>
+                <form id="budgetForm">
+                    <div class="form-group">
+                        <label for="budgetInput">Monthly Budget (KSH)</label>
+                        <input type="number" id="budgetInput" placeholder="e.g. 5000" min="1" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Set Budget</button>
+                </form>
+            </article>
+
+            <!-- Add Expense Card -->
+            <article class="card">
+                <h2>Add Expense</h2>
+                <form id="expenseForm">
+                    <div class="form-group">
+                        <label for="descInput">Description</label>
+                        <input type="text" id="descInput" placeholder="e.g. Lunch at cafeteria" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="amountInput">Amount (KSH)</label>
+                        <input type="number" id="amountInput" placeholder="e.g. 200" min="1" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="categoryInput">Category</label>
+                        <select id="categoryInput">
+                            <option>Food</option>
+                            <option>Transport</option>
+                            <option>Books</option>
+                            <option>Entertainment</option>
+                            <option>Other</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Add Expense</button>
+                </form>
+            </article>
+
+            <!-- Summary Card -->
+            <article class="card">
+                <h2>Your Summary</h2>
+                <div class="stat-row">
+                    <span>Budget:</span>
+                    <strong id="budgetTotal">KSH 0</strong>
+                </div>
+                <div class="stat-row">
+                    <span>Spent:</span>
+                    <strong id="budgetSpent">KSH 0</strong>
+                </div>
+                <div class="stat-row">
+                    <span>Remaining:</span>
+                    <strong id="budgetLeft">KSH 0</strong>
+                </div>
+                
+                <div class="progress-bg">
+                    <div class="progress-fill" id="progressBar" style="width: 0%"></div>
+                </div>
+
+                <div id="alertBox" class="alert alert-info">
+                    Set a budget to start tracking your spending.
+                </div>
+            </article>
+
         </div>
-        <div id="budget-warning" class="alert info">Set a budget to start tracking your spending.</div>
-      </div>
 
-      <div class="card">
-        <h2>Add an expense</h2>
-        <form id="expense-form" class="simple-form">
-          <label for="expense-description">Description</label>
-          <input id="expense-description" type="text" placeholder="e.g. Lunch" required>
+        <!-- Expense Table -->
+        <section class="table-container">
+            <h2>Recent Expenses</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>Description</th>
+                        <th>Category</th>
+                        <th>Amount</th>
+                    </tr>
+                </thead>
+                <tbody id="expenseTable">
+                    <tr>
+                        <td colspan="4" class="empty-message">No expenses recorded yet</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+    </main>
 
-          <label for="expense-amount">Amount (KSH)</label>
-          <input id="expense-amount" type="number" min="0.01" step="any" placeholder="KSH 0.00" required>
-
-          <label for="expense-category">Category</label>
-          <select id="expense-category">
-            <option>Food</option>
-            <option>Transport</option>
-            <option>Study</option>
-            <option>Entertainment</option>
-            <option>Other</option>
-          </select>
-
-          <button type="submit" class="button secondary">Add expense</button>
-        </form>
-      </div>
-    </section>
-
-    <section class="tracker-simple">
-      <div class="card">
-        <h2>Recent expenses</h2>
-        <div class="expense-list">
-          <table>
-            <thead>
-              <tr>
-                <th>Date</th>
-                <th>Description</th>
-                <th>Category</th>
-                <th>Amount</th>
-              </tr>
-            </thead>
-            <tbody id="expense-table-body"></tbody>
-          </table>
-        </div>
-      </div>
-    </section>
-  </div>
+    <script src="script.js"></script>
 </body>
 </html>
